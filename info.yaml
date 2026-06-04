@@ -7,7 +7,7 @@ project:
   language:     "Verilog"
   clock_hz:     10000000
   tiles: "1x2"
-  top_module:  "top_music"
+  top_module:  "tt_um_tone_gen_spi"
   source_files:
     - "project.v"
     - "top_music.v"
