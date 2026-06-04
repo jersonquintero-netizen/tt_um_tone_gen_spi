@@ -173,11 +173,7 @@ spi_controller #(.CLK_DIV(4)) u_spi (
     .miso       (spi_miso)
 );
 
-sequencer #(
-    .CLK_FREQ   (10_000_000),
-    .BPM        (120),
-    .TICKS_BEAT (4)
-) u_seq (
+sequencer u_seq (
     .clk            (clk),
     .rst            (rst),
     .play           (play),
