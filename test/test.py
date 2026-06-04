@@ -23,7 +23,7 @@ async def test_reset(dut):
 
     # After reset CS# should be high (inactive)
     dut._log.info("Check CS# is high after reset")
-    assert dut.uo_out.value[6] == 1, "CS# should be high after reset"
+    assert dut.uo_out.value[1] == 1, "CS# should be high after reset"
     dut._log.info("Reset test passed")
 
 @cocotb.test()

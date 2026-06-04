@@ -6,8 +6,8 @@ project:
   description:  "Musical tone generator that reads note sequences from W25Q32 Flash memory via SPI and generates PWM audio. Supports 3 songs selectable via debounced push buttons."
   language:     "Verilog"
   clock_hz:     10000000
-  tiles: "1x1"
-  top_module:  "tt_um_tone_gen_spi"
+  tiles: "1x2"
+  top_module:  "top_music"
   source_files:
     - "project.v"
     - "top_music.v"
