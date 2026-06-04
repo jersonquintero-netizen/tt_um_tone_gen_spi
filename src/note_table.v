@@ -1,3 +1,4 @@
+`default_nettype none
 // ============================================================
 // note_table.v
 // Mapea ID de nota (0-29) a divisor de frecuencia
