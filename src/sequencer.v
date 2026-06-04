@@ -1,11 +1,7 @@
 `default_nettype none
 `timescale 1ns/1ps
 
-module sequencer #(
-    parameter CLK_FREQ   = 10_000_000,
-    parameter BPM        = 120,
-    parameter TICKS_BEAT = 4
-)(
+module sequencer (
     input  wire        clk,
     input  wire        rst,
     input  wire        play,
@@ -20,8 +16,6 @@ module sequencer #(
 );
 
 localparam [31:0] TICK_CYCLES = 32'd1250000;
-
-wire [23:0] song_base = {14'd0, song_sel, 8'd0};
 
 localparam S_IDLE      = 3'd0;
 localparam S_START_SPI = 3'd1;
