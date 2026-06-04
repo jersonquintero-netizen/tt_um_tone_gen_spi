@@ -7,29 +7,29 @@ This file is used to generate your project datasheet.
 This project implements a **musical tone generator based on Direct Digital Synthesis (DDS)**. It reads note sequences stored in an external W25Q32 SPI Flash memory and generates PWM audio output through a speaker amplifier.
 
 ### System Architecture
-┌─────────────────────────────────────────────────────────┐
-│                    tt_um_tone_gen_spi                    │
-│                                                         │
-│  ┌──────────┐    ┌───────────┐    ┌──────────────────┐  │
-│  │ Debounce │    │ Sequencer │    │  SPI Controller  │  │
-│  │  Logic   │───▶│   FSM     │───▶│  (Mode 0, SPI)   │  │
-│  └──────────┘    └───────────┘    └──────────────────┘  │
-│       ▲               │                    │             │
-│       │               ▼                    ▼             │
-│  Push │        ┌────────────┐    ┌──────────────────┐   │
-│  Buttons       │ Note Table │    │  W25Q32 Flash    │   │
-│               │  (Divisors)│    │  (3 Songs)       │   │
-│               └────────────┘    └──────────────────┘   │
-│                      │                                  │
-│                      ▼                                  │
-│               ┌────────────┐                            │
-│               │   Tone     │                            │
-│               │ Generator  │                            │
-│               └────────────┘                            │
-│                      │                                  │
-│                      ▼                                  │
-│               PWM Audio Output ──▶ LM358 ──▶ Speaker    │
-└─────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                    tt_um_tone_gen_spi                    â”‚
+â”‚                                                         â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ Debounce â”‚    â”‚ Sequencer â”‚    â”‚  SPI Controller  â”‚  â”‚
+â”‚  â”‚  Logic   â”‚â”€â”€â”€â–¶â”‚   FSM     â”‚â”€â”€â”€â–¶â”‚  (Mode 0, SPI)   â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚       â–²               â”‚                    â”‚             â”‚
+â”‚       â”‚               â–¼                    â–¼             â”‚
+â”‚  Push â”‚        â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”‚
+â”‚  Buttons       â”‚ Note Table â”‚    â”‚  W25Q32 Flash    â”‚   â”‚
+â”‚               â”‚  (Divisors)â”‚    â”‚  (3 Songs)       â”‚   â”‚
+â”‚               â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚
+â”‚                      â”‚                                  â”‚
+â”‚                      â–¼                                  â”‚
+â”‚               â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                            â”‚
+â”‚               â”‚   Tone     â”‚                            â”‚
+â”‚               â”‚ Generator  â”‚                            â”‚
+â”‚               â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                            â”‚
+â”‚                      â”‚                                  â”‚
+â”‚                      â–¼                                  â”‚
+â”‚               PWM Audio Output â”€â”€â–¶ LM358 â”€â”€â–¶ Speaker    â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
 ### Module Description
 
@@ -79,7 +79,7 @@ Notes are stored in Flash memory as pairs of bytes `[note_id, duration]`:
 | Song | Start Address | Size |
 |------|--------------|------|
 | Beat It (Michael Jackson) | 0x000000 | 193 bytes |
-| Cumpleaños Feliz | 0x000100 | 117 bytes |
+| CumpleaÃ±os Feliz | 0x000100 | 117 bytes |
 | Super Mario Bros | 0x000200 | 131 bytes |
 
 ### RTL Simulation
@@ -108,9 +108,9 @@ The design was synthesized using Quartus II for the Cyclone II EP2C20F484C7 FPGA
 | W25Q32 Flash Module | SPI Flash memory with 32Mbit capacity |
 | ESP32-WROOM-32 | Used to program the Flash via MicroPython |
 | LM358 Op-Amp | Audio amplifier (gain 10x) |
-| Speaker 4Ω 8W | Audio output |
+| Speaker 4Î© 8W | Audio output |
 | 3x Push buttons | PLAY, STOP, NEXT controls |
-| 10kΩ, 100kΩ resistors | For LM358 amplifier circuit |
+| 10kÎ©, 100kÎ© resistors | For LM358 amplifier circuit |
 | Breadboard + jumper wires | For circuit connections |
 
 ### Step 1: Program the Flash Memory
@@ -132,7 +132,7 @@ Connect the W25Q32 Flash to the ESP32 as follows:
 
 ![W25Q32 Flash Module](flash_w25q32.jpeg)
 
-*W25Q32 SPI Flash memory module. Stores 3 songs: Beat It, Cumpleaños Feliz and Super Mario Bros.*
+*W25Q32 SPI Flash memory module. Stores 3 songs: Beat It, CumpleaÃ±os Feliz and Super Mario Bros.*
 
 Run the following command to program the Flash:
 
@@ -180,22 +180,22 @@ Connect the W25Q32 Flash and peripherals to the DE1 GPIO_0 connector:
 | Pin 30 | GND | Flash GND + Amplifier GND |
 
 ### Step 3: LM358 Amplifier Circuit
-                100kΩ
-          ┌────/\/\/────┐
-          │             │
-FPGA pin1 ───▶ pin3(+)LM358 pin1(out)───▶ Speaker(+)
-│             │
-10kΩ      pin2(-)──┘
-│
-GND ◀──── Speaker(-)
-VCC (5V) ──▶ pin8
-GND      ──▶ pin4
+                100kÎ©
+          â”Œâ”€â”€â”€â”€/\/\/â”€â”€â”€â”€â”
+          â”‚             â”‚
+FPGA pin1 â”€â”€â”€â–¶ pin3(+)LM358 pin1(out)â”€â”€â”€â–¶ Speaker(+)
+â”‚             â”‚
+10kÎ©      pin2(-)â”€â”€â”˜
+â”‚
+GND â—€â”€â”€â”€â”€ Speaker(-)
+VCC (5V) â”€â”€â–¶ pin8
+GND      â”€â”€â–¶ pin4
 
 ### Step 4: Program the FPGA
 
 1. Open Quartus II and load the project
-2. Compile: **Processing → Start Compilation** (`Ctrl+L`)
-3. Program: **Tools → Programmer → Start**
+2. Compile: **Processing â†’ Start Compilation** (`Ctrl+L`)
+3. Program: **Tools â†’ Programmer â†’ Start**
 
 ### Step 5: Play Music
 
@@ -207,7 +207,7 @@ GND      ──▶ pin4
 |--------|--------|
 | PLAY (ui_in[0]) | Start playing current song |
 | STOP (ui_in[1]) | Stop playback |
-| NEXT (ui_in[2]) | Select next song (cycles: Beat It → Cumpleaños → Mario → Beat It) |
+| NEXT (ui_in[2]) | Select next song (cycles: Beat It â†’ CumpleaÃ±os â†’ Mario â†’ Beat It) |
 
 Press **PLAY** to start playing. The system will read notes from the Flash memory via SPI and generate PWM audio output. Press **NEXT** to change songs and **STOP** to pause.
 
